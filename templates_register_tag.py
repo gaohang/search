@@ -1,0 +1,33 @@
+from elasticsearch import Elasticsearch
+from utils import cipher_decrypted
+from config import hosts, auth
+from templates.it_placeholder_index import placeholder_index
+from templates.st_placeholder_search import placeholder_search
+from templates.it_hot_words_index import hot_words_index
+from templates.st_hot_words_search import hot_words_search
+from templates.it_suggestion_index import suggestion_index
+from templates.st_suggestion_search import suggestion_search
+from templates.st_suggestion_search_phrase import suggestion_search_phrase
+from templates.st_suggestion_search_fuzzy import suggestion_search_fuzzy
+from templates.it_suggestion_index_v2 import suggestion_index_v2
+from templates.st_suggestion_search_v2 import suggestion_search_v2
+from templates.st_suggestion_search_phrase_v2 import suggestion_search_phrase_v2
+from templates.st_suggestion_search_fuzzy_v2 import suggestion_search_fuzzy_v2
+from templates.it_query_parser_index import query_parser_index
+from templates.it_query_parser_index_v2 import query_parser_index_v2
+from templates.it_query_parser_index_v3 import query_parser_index_v3
+from templates.it_query_parser_index_v4 import query_parser_index_v4
+from templates.it_query_parser_index_v5 import query_parser_index_v5
+from templates.st_query_parser_search import query_parser_search
+from templates.it_main_search_index import main_search_index
+from templates.st_main_search_search import main_search_search
+from templates.st_main_search_search_v2 import main_search_search_v2
+from templates.st_main_search_search_v3 import main_search_search_v3
+from templates.st_main_search_search_v4 import main_search_search_v4
+from templates.st_main_search_search_v5 import main_search_search_v5
+from templates.st_main_search_search_v6 import main_search_search_v6
+from templates.st_main_search_search_v7 import main_search_search_v7
+from templates.st_main_search_search_v7_tag import main_search_search_v7_tag
+
+es = Elasticsearch(hosts, http_auth=cipher_decrypted(auth))
+print("[register template] main_search_search_v7_tag: %s" % es.put_script("main_search_search_v7_tag", main_search_search_v7_tag))
